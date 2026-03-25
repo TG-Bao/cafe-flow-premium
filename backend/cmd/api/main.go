@@ -15,8 +15,10 @@ import (
 )
 
 func main() {
-	// Load environment variables from project root
-	godotenv.Load("../.env")
+	// Load environment variables from project root (optional for production)
+	if err := godotenv.Load("../.env"); err != nil {
+		log.Println("Note: .env file not found, using system environment variables")
+	}
 
 	// Initialize Database
 	repository.ConnectDatabase()

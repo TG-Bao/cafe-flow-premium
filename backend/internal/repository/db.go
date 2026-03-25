@@ -20,6 +20,15 @@ func ConnectDatabase() {
 	targetDB := os.Getenv("DB_NAME")
 	port := os.Getenv("DB_PORT")
 
+	if host == "" {
+		host = "localhost"
+	}
+	if port == "" {
+		port = "1434"
+	}
+
+	log.Printf("Attempting to connect to database at %s:%s (DB: %s)", host, port, targetDB)
+
 	// 1. First, connect to 'master' to ensure the target database exists
 	dsnMaster := fmt.Sprintf("sqlserver://%s:%s@%s:%s?database=master", user, password, host, port)
 	dbMaster, err := gorm.Open(sqlserver.Open(dsnMaster), &gorm.Config{})
