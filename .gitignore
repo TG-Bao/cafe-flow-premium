@@ -1,0 +1,59 @@
+# ═══════════════════════════════════════
+# Cafe Flow Premium — .gitignore
+# ═══════════════════════════════════════
+
+# ─── Biến môi trường (TUYỆT ĐỐI KHÔNG commit) ───
+.env
+.env.local
+.env.production
+.env.development
+backend/.env
+frontend/.env
+
+# ─── Go Backend ───────────────────────
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+vendor/
+backend/server
+backend/server.log
+backend/tmp/
+
+# ─── Frontend (Node/Vite) ─────────────
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+node_modules/
+
+# ─── IDE & OS ─────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.idea/
+.vscode/settings.json
+*.swp
+*.swo
+*~
+
+# ─── Logs ─────────────────────────────
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ─── Coverage & Test ──────────────────
+coverage/
+*.lcov
+.nyc_output
+
+# ─── Docker ───────────────────────────
+.docker/
