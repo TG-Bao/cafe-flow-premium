@@ -1,9 +1,11 @@
 package handlers
 
 import (
+	"log"
 	"net/http"
-	"time"
 	"os"
+	"time"
+
 	"cute-calendar/internal/models"
 	"cute-calendar/internal/repository"
 	"github.com/gin-gonic/gin"
@@ -38,7 +40,8 @@ func Register(c *gin.Context) {
 	}
 
 	if err := repository.DB.Create(&user).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Username already exists"})
+		log.Printf("Error creating user: %v", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Database error: " + err.Error()})
 		return
 	}
 
